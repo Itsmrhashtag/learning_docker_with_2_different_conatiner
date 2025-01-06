@@ -30,8 +30,9 @@ docker network create hospital-network
 Start a MySQL container with the required environment variables.
 
 ```bash
-docker run -d --name mysql-container --network hospital-network -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=hospitaldb mysql:8.0
+docker run -d --name mysql-container --network hospital-network -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=hospitaldb -p 3307:3306 mysql:8.0
 ```
+The mysql will accessible at: 3307 port
 
 
 * **MYSQL_ROOT_PASSWORD:** Sets the root password to `1234`.
