@@ -17,6 +17,7 @@ Before you start, ensure you have the following installed:
 
 ## Setup Instructions
 
+## 1st way 
 ### Step 1: Create a Docker Network
 
 Create a dedicated Docker network for the application and database to communicate.
@@ -60,6 +61,11 @@ docker run -d --name hospital-container --network hospital-network -e SPRING_DAT
 ### Step 5: Access the Application
 
 The application will be accessible at: http://localhost:8080
+
+## 2nd way use docker-compose file
+```bash
+docker compose -f docker-compose-hospital.yaml up
+```
 
 ## Verify the Setup
 * Check the Running Containers:
