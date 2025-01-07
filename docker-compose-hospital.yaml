@@ -1,0 +1,27 @@
+services:
+  mysql-container:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: hospitaldb
+    ports:
+      - 3307:3306
+    networks:
+      - hospital-network
+  
+  hospital-container:
+    image: hospital-app
+    environment:
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 1234
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-container:3306/hospitaldb
+    ports:
+      - 8080:8080
+    networks:
+      - hospital-network
+    depends_on:
+      - mysql-container
+
+networks:
+  hospital-network:
+    driver: bridge
